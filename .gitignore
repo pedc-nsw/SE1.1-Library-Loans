@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+
+# Local database - do not commit sensitive data
+data/library.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+.DS_Store
