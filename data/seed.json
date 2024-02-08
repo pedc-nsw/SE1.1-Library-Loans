@@ -1,0 +1,34 @@
+{
+  "books": [
+    { "id": 1,  "isbn": "9780143039433", "title": "Of Mice and Men",            "author": "John Steinbeck",   "category": "fiction",   "copies": 12, "on_loan": 4 },
+    { "id": 2,  "isbn": "9780732272098", "title": "The Rabbits",                "author": "John Marsden",     "category": "fiction",   "copies": 8,  "on_loan": 2 },
+    { "id": 3,  "isbn": "9780143180487", "title": "Macbeth",                    "author": "William Shakespeare", "category": "drama",  "copies": 30, "on_loan": 11 },
+    { "id": 4,  "isbn": "9780141036137", "title": "Nineteen Eighty-Four",       "author": "George Orwell",    "category": "fiction",   "copies": 15, "on_loan": 6 },
+    { "id": 5,  "isbn": "9780330284141", "title": "Tomorrow, When the War Began", "author": "John Marsden",   "category": "fiction",   "copies": 10, "on_loan": 3 },
+    { "id": 6,  "isbn": "9780867806809", "title": "Jacaranda Physics 11",       "author": "Lofts and Evergreen", "category": "science", "copies": 25, "on_loan": 9 },
+    { "id": 7,  "isbn": "9781442549456", "title": "The Arrival",                "author": "Shaun Tan",        "category": "graphic",   "copies": 6,  "on_loan": 1 },
+    { "id": 8,  "isbn": "9780143566069", "title": "Looking for Alibrandi",      "author": "Melina Marchetta", "category": "fiction",   "copies": 14, "on_loan": 5 },
+    { "id": 9,  "isbn": "9780170411943", "title": "Maths in Focus Year 12",     "author": "Grove",            "category": "maths",     "copies": 40, "on_loan": 22 },
+    { "id": 10, "isbn": "9780522866025", "title": "A Short History of Australia", "author": "Manning Clark",  "category": "history",   "copies": 5,  "on_loan": 1 },
+    { "id": 11, "isbn": "9780994390424", "title": "Dark Emu",                   "author": "Bruce Pascoe",     "category": "history",   "copies": 9,  "on_loan": 3 },
+    { "id": 12, "isbn": "9780262033848", "title": "Introduction to Algorithms", "author": "Cormen et al",     "category": "computing", "copies": 4,  "on_loan": 2 }
+  ],
+  "students": [
+    { "id": 2201, "name": "Aisha Rahman",   "year_group": 11, "email": "aisha.rahman@student.binarybay.nsw.edu.au" },
+    { "id": 2202, "name": "Liam O'Connell", "year_group": 12, "email": "liam.oconnell@student.binarybay.nsw.edu.au" },
+    { "id": 2203, "name": "Mei Tanaka",     "year_group": 10, "email": "mei.tanaka@student.binarybay.nsw.edu.au" },
+    { "id": 2204, "name": "Jack Petrakis",  "year_group": 12, "email": "jack.petrakis@student.binarybay.nsw.edu.au" },
+    { "id": 2205, "name": "Sophie Varga",   "year_group": 9,  "email": "sophie.varga@student.binarybay.nsw.edu.au" },
+    { "id": 2206, "name": "Noah Williams",  "year_group": 11, "email": "noah.williams@student.binarybay.nsw.edu.au" }
+  ],
+  "loans": [
+    { "id": 5001, "book_id": 3,  "student_id": 2202, "borrowed_days_ago": 31, "returned": false },
+    { "id": 5002, "book_id": 9,  "student_id": 2204, "borrowed_days_ago": 26, "returned": false },
+    { "id": 5003, "book_id": 4,  "student_id": 2201, "borrowed_days_ago": 19, "returned": false },
+    { "id": 5004, "book_id": 12, "student_id": 2206, "borrowed_days_ago": 17, "returned": false },
+    { "id": 5005, "book_id": 1,  "student_id": 2203, "borrowed_days_ago": 9,  "returned": false },
+    { "id": 5006, "book_id": 8,  "student_id": 2205, "borrowed_days_ago": 4,  "returned": false },
+    { "id": 5007, "book_id": 11, "student_id": 2202, "borrowed_days_ago": 40, "returned": true },
+    { "id": 5008, "book_id": 6,  "student_id": 2201, "borrowed_days_ago": 35, "returned": true }
+  ]
+}
