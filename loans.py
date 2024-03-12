@@ -72,6 +72,8 @@ def return_book(book_id):
 
     conn.execute("UPDATE loans SET returned_on = ? WHERE id = ?",
                  (_today().isoformat(), loan["id"]))
+    conn.execute("UPDATE books SET on_loan = on_loan - 1 WHERE id = ?",
+                 (book_id,))
     conn.commit()
     conn.close()
 
