@@ -82,3 +82,41 @@ def return_book(book_id):
     if days_late > 0:
         print("%d days late. Fine: $%.2f"
               % (days_late, days_late * config.FINE_PER_DAY))
+
+
+def overdue_loans():
+    """Return every loan that is past its due date and not yet returned."""
+    conn = db.connect()
+    rows = conn.execute(
+        "SELECT loans.*, books.title, students.name, students.email "
+        "FROM loans "
+        "JOIN books ON books.id = loans.book_id "
+        "JOIN students ON students.id = loans.student_id "
+        "WHERE loans.returned_on IS NULL AND loans.due_on < ? "
+        "ORDER BY loans.due_on",
+        (_today().isoformat(),),
+    ).fetchall()
+    conn.close()
+    return rows
+
+
+def days_overdue(loan):
+    return (_today() - datetime.date.fromisoformat(loan["due_on"])).days
+
+
+def fine_for(loan):
+    return days_overdue(loan) * config.FINE_PER_DAY
+
+
+def print_overdue():
+    rows = overdue_loans()
+
+    if not rows:
+        print("Nothing is overdue.")
+        return
+
+    print("%-26s %-18s %6s" % ("TITLE", "STUDENT", "DAYS"))
+    print("-" * 54)
+    for row in rows:
+        print("%-26s %-18s %6d" % (
+            row["title"][:26], row["name"][:18], days_overdue(row)))
