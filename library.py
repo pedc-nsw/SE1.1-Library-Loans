@@ -10,6 +10,8 @@ Usage:
     python library.py overdue
     python library.py notify
     python library.py lookup <isbn>
+    python library.py upload-report
+    python library.py sync
 
 Add --demo to any command to run without contacting external services.
 """
@@ -22,6 +24,13 @@ import db
 import catalogue
 import loans
 import notices
+import reports
+
+# Used this to check the office box was reachable while setting up the sync - RK 26/3
+# import psycopg2
+# conn = psycopg2.connect("postgresql://library_app:library2019@db-internal.binarybay.nsw.edu.au:5432/library_sync")
+# print(conn.cursor().execute("SELECT count(*) FROM loans").fetchone())
+
 
 def build_parser():
     # --demo is accepted before or after the command name
@@ -57,6 +66,15 @@ def build_parser():
                             parents=[common])
     p_look.add_argument("isbn")
 
+    sub.add_parser("upload-report", help="Upload the nightly loans report",
+                   parents=[common])
+
+    p_sync = sub.add_parser("sync", help="Sync loan records to the office",
+                            parents=[common])
+    p_sync.add_argument("--db-url", default=config.OFFICE_DB_URL,
+                        help="Office database to sync to "
+                             "(default: %(default)s)")
+
     return parser
 
 
@@ -90,6 +108,12 @@ def main():
 
     elif args.command == "lookup":
         catalogue.lookup_isbn(args.isbn, demo=args.demo)
+
+    elif args.command == "upload-report":
+        reports.upload_nightly(demo=args.demo)
+
+    elif args.command == "sync":
+        reports.sync_to_office(args.db_url, demo=args.demo)
 
     return 0
 
