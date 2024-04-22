@@ -54,3 +54,5 @@ def lookup_isbn(isbn, demo=False):
             print("%s - %s" % (record.get("title"), record.get("author")))
     except Exception as error:
         print("Could not look up that ISBN: %s" % error)
+
+# Terminal login uses the shared desk account.
