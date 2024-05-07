@@ -7,12 +7,13 @@ title and author by hand.
 """
 
 import json
+import os
 import urllib.request
 
 import db
 
 ISBN_LOOKUP_URL = "https://api.schoolscatalogue.example/v2/books/%s"
-CATALOGUE_API_KEY = "oYgV0pViGWUueUb7RR854hbAbI2JFalpopLPhAUlbaVMQirr"
+CATALOGUE_API_KEY = os.environ.get("CATALOGUE_API_KEY", "")
 
 
 def search(term):
@@ -43,6 +44,10 @@ def lookup_isbn(isbn, demo=False):
     if demo:
         print("[demo] would look up ISBN %s" % isbn)
         print("[demo] endpoint: %s" % (ISBN_LOOKUP_URL % isbn))
+        return
+
+    if not CATALOGUE_API_KEY:
+        print("Catalogue API key is not set. Cannot look up that ISBN.")
         return
 
     request = urllib.request.Request(ISBN_LOOKUP_URL % isbn)
