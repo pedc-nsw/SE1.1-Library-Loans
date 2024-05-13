@@ -115,8 +115,9 @@ def print_overdue():
         print("Nothing is overdue.")
         return
 
-    print("%-26s %-18s %6s" % ("TITLE", "STUDENT", "DAYS"))
-    print("-" * 54)
+    print("%-26s %-18s %6s %8s" % ("TITLE", "STUDENT", "DAYS", "FINE"))
+    print("-" * 62)
     for row in rows:
-        print("%-26s %-18s %6d" % (
-            row["title"][:26], row["name"][:18], days_overdue(row)))
+        print("%-26s %-18s %6d %8.2f" % (
+            row["title"][:26], row["name"][:18],
+            days_overdue(row), fine_for(row)))
