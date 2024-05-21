@@ -43,7 +43,7 @@ def build_report():
     overdue = loans.overdue_loans()
 
     return {
-        "generated": datetime.datetime.now().strftime("%d/%m/%Y"),
+        "generated": datetime.datetime.now().strftime("%Y-%m-%d"),
         "titles_held": titles,
         "loans_open": open_loans,
         "loans_overdue": len(overdue),
@@ -53,7 +53,7 @@ def build_report():
 
 def upload_nightly(demo=False):
     report = build_report()
-    filename = "loans-%s.json" % datetime.datetime.now().strftime("%d-%m-%Y")
+    filename = "loans-%s.json" % datetime.datetime.now().strftime("%Y-%m-%d")
 
     if demo:
         print("[demo] would upload %s to %s" % (filename, BUCKET_URL))
