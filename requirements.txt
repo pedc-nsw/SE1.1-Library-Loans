@@ -1,2 +1,3 @@
-# Standard library only for now.
-# Added as the project grows.
+requests==2.25.1
+urllib3==1.26.5
+python-dateutil==2.8.1
